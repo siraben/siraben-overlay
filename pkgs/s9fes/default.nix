@@ -1,0 +1,23 @@
+{ stdenv, lib, fetchurl, ncurses }:
+
+stdenv.mkDerivation rec {
+  pname = "s9fes";
+  version = "unstable-2019-04-02";
+
+  src = fetchurl {
+    url = "http://www.t3x.org/s9fes/s9fes-20181205.tgz";
+    sha256 = "1jd9brg6djxy3kdaw80hpvc557q4w2cjsry064kgkn3js4n6wbg9";
+  };
+
+  buildInputs = [ ncurses ];
+  makeFlags = [ "PREFIX=$(out)" ];
+  enableParallelBuilding = true;
+
+  meta = with stdenv.lib; {
+    description = "Scheme 9 From Empty Space";
+    homepage = "http://www.t3x.org/s9fes/index.html";
+    license = licenses.publicDomain;
+    maintainers = with maintainers; [ siraben ];
+    platforms = platforms.unix;
+  };
+}

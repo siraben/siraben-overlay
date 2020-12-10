@@ -9,6 +9,15 @@ stdenv.mkDerivation rec {
     sha256 = "0rqaycq6fdl3r870bzba2cj4y7n34xxfzyvizbqg83s2r27vhqf3";
   };
 
+  buildPhase = ''
+    gcc -o c4 c4.c
+  '';
+
+  installPhase = ''
+    mkdir -p $out/bin
+    cp c4 $out/bin
+  '';
+
   meta = with lib; {
     description = "C in four functions";
     homepage = "https://github.com/rswier/c4";
