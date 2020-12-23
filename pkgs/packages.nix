@@ -14,6 +14,7 @@ in
   mescc-tools-seed = callPackage ./mescc-tools-seed { };
   micro-lisp = callPackage ./micro-lisp { };
   regenkfs = callPackage ./regenkfs { };
+  remarkable-linux-client = super.qt5.callPackage ./remarkable-linux-client { };
   remkrom = callPackage ./remkrom { };
   s9fes = callPackage ./s9fes { };
   ti84-forth = callPackage ./ti84-forth { };
