@@ -19,4 +19,10 @@ stdenv.mkDerivation rec {
   '';
   nativeBuildInputs = lib.optionals stdenv.isDarwin [ gcc ];
   hardeningDisable = [ "all" ];
+  meta = with lib; {
+    description = "stage0";
+    platform = platforms.linux;
+    maintainers = [ maintainers.siraben ];
+    license = licenses.gpl3Plus;
+  };
 }
