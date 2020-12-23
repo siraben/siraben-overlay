@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, clang, jam }:
+{ stdenv, lib, fetchFromGitHub, clang, jam }:
 
 stdenv.mkDerivation {
   pname = "cakelisp";
@@ -27,7 +27,7 @@ stdenv.mkDerivation {
     substituteInPlace src/RunProcess.cpp --replace 'log.' 'gLog.'
     substituteInPlace src/ModuleManager.cpp --replace 'log.' 'gLog.'
 
-    substituteInPlace Jamrules --replace 'OS_DEPENDENT_LINKFLAGS = --export-dynamic ;' 'OS_DEPENDENT_LINKFLAGS = -export_dynamic ;'
+    ${lib.optionalString stdenv.isDarwin "substituteInPlace Jamrules --replace 'OS_DEPENDENT_LINKFLAGS = --export-dynamic ;' 'OS_DEPENDENT_LINKFLAGS = -export_dynamic ;'"}
 
     substituteInPlace runtime/HotReloading.cake \
         --replace '"/usr/bin/clang++"' '"${clang}/bin/clang++"'
