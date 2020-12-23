@@ -17,6 +17,7 @@ in
   remarkable-linux-client = super.qt5.callPackage ./remarkable-linux-client { };
   remkrom = callPackage ./remkrom { };
   s9fes = callPackage ./s9fes { };
+  stage0 = callPackage ./stage0 { };
   ti84-forth = callPackage ./ti84-forth { };
   zkeme80 = callPackage ./zkeme80 { };
 }
