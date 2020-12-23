@@ -1,15 +1,21 @@
 self: super:
 
+let
+  callPackage = super.callPackage;
+in
 {
-  bootstrap-scheme = super.callPackage ./bootstrap-scheme { };
-  c4 = super.callPackage ./c4 { };
-  cakelisp = super.callPackage ./cakelisp { };
-  collapseos = super.callPackage ./collapseos { };
-  jonesforth = super.callPackage ./jonesforth { };
-  mescc-tools-seed = super.callPackage ./mescc-tools-seed { };
-  micro-lisp = super.callPackage ./micro-lisp { };
-  regenkfs = super.callPackage ./regenkfs { };
-  s9fes = super.callPackage ./s9fes { };
-  ti84-forth = super.callPackage ./ti84-forth { };
-  zkeme80 = super.callPackage ./zkeme80 { };
+  bootstrap-scheme = callPackage ./bootstrap-scheme { };
+  c4 = callPackage ./c4 { };
+  cakelisp = callPackage ./cakelisp { };
+  collapseos = callPackage ./collapseos { };
+  double-pendulum-simulation = super.haskellPackages.callPackage ./double-pendulum-simulation { };
+  git2graph = callPackage ./git2graph { };
+  jonesforth = callPackage ./jonesforth { };
+  mescc-tools-seed = callPackage ./mescc-tools-seed { };
+  micro-lisp = callPackage ./micro-lisp { };
+  regenkfs = callPackage ./regenkfs { };
+  remkrom = callPackage ./remkrom { };
+  s9fes = callPackage ./s9fes { };
+  ti84-forth = callPackage ./ti84-forth { };
+  zkeme80 = callPackage ./zkeme80 { };
 }

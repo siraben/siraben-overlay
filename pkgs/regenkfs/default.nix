@@ -2,7 +2,7 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "regenkfs";
-  version = "unstable-2020-10-17";
+  version = "0.1.0";
 
   src = fetchFromGitHub {
     owner = "siraben";
