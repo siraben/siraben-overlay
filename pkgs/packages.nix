@@ -3,6 +3,7 @@ self: super:
 {
   bootstrap-scheme = super.callPackage ./bootstrap-scheme { };
   c4 = super.callPackage ./c4 { };
+  cakelisp = super.callPackage ./cakelisp { };
   collapseos = super.callPackage ./collapseos { };
   jonesforth = super.callPackage ./jonesforth { };
   mescc-tools-seed = super.callPackage ./mescc-tools-seed { };
