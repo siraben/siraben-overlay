@@ -13,6 +13,7 @@ in
   jonesforth = callPackage ./jonesforth { };
   mescc-tools-seed = callPackage ./mescc-tools-seed { };
   micro-lisp = callPackage ./micro-lisp { };
+  oxide = callPackage ./oxide { };
   regenkfs = callPackage ./regenkfs { };
   remarkable-linux-client = super.qt5.callPackage ./remarkable-linux-client { };
   remkrom = callPackage ./remkrom { };
