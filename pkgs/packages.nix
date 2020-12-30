@@ -25,5 +25,6 @@ in
   s9fes = callPackage ./s9fes { };
   stage0 = callPackage ./stage0 { };
   ti84-forth = callPackage ./ti84-forth { };
+  twin = callPackage ./twin { };
   zkeme80 = callPackage ./zkeme80 { };
 }
