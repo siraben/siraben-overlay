@@ -19,6 +19,7 @@ in
   remkrom = callPackage ./remkrom { };
   s9fes = callPackage ./s9fes { };
   stage0 = callPackage ./stage0 { };
+  tccBootstrap = callPackage ./tccBootstrap { };
   ti84-forth = callPackage ./ti84-forth { };
   zkeme80 = callPackage ./zkeme80 { };
 }
