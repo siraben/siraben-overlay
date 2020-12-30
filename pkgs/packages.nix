@@ -21,6 +21,7 @@ in
   regenkfs = callPackage ./regenkfs { };
   remarkable-linux-client = super.qt5.callPackage ./remarkable-linux-client { };
   remkrom = callPackage ./remkrom { };
+  rmfakecloud = callPackage ./rmfakecloud { };
   rmview = callPackage ./rmview { };
   s9fes = callPackage ./s9fes { };
   stage0 = callPackage ./stage0 { };
