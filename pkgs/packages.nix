@@ -12,6 +12,7 @@ in
   double-pendulum-simulation = super.haskellPackages.callPackage ./double-pendulum-simulation { };
   git2graph = callPackage ./git2graph { };
   jonesforth = callPackage ./jonesforth { };
+  mes = callPackage ./mes { };
   mescc-tools-seed = callPackage ./mescc-tools-seed { };
   micro-lisp = callPackage ./micro-lisp { };
   oberon-risc-emu = callPackage ./oberon-risc-emu { };
