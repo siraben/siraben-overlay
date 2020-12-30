@@ -4,6 +4,7 @@ let
   callPackage = super.callPackage;
 in
 {
+  blynn = callPackage ./blynn { };
   bootstrap-scheme = callPackage ./bootstrap-scheme { };
   c4 = callPackage ./c4 { };
   cakelisp = callPackage ./cakelisp { };
