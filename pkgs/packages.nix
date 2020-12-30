@@ -14,6 +14,7 @@ in
   jonesforth = callPackage ./jonesforth { };
   mescc-tools-seed = callPackage ./mescc-tools-seed { };
   micro-lisp = callPackage ./micro-lisp { };
+  oberon-risc-emu = callPackage ./oberon-risc-emu { };
   oxide = callPackage ./oxide { };
   regenkfs = callPackage ./regenkfs { };
   remarkable-linux-client = super.qt5.callPackage ./remarkable-linux-client { };
