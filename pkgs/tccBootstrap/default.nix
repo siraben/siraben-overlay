@@ -1,23 +1,23 @@
-{ stdenv, fetchurl, coreutils, gnutar, gzip, patch, gnumake, bash, gnused, gnugrep }:
+{ stdenvNoCC, fetchurl, coreutils, gnutar, gzip, patch, gnumake, bash, gnused, gnugrep }:
 
 rec {
 
   mesBoot0 = fetchurl {
-    url = "http://alpha.gnu.org/gnu/guix/bootstrap/i686-linux/20181020/mes-minimal-stripped-0.18-0.08f04f5-i686-linux.tar.xz";
+    url = "https://alpha.gnu.org/gnu/guix/bootstrap/i686-linux/20181020/mes-minimal-stripped-0.18-0.08f04f5-i686-linux.tar.xz";
     sha256 = "0qwpby91hp6afmg5ibdrrk3fw85zxdazfk7rhrdsihsfzqwmfhfx";
   };
 
   mesccToolsBoot = fetchurl {
-    url = "http://alpha.gnu.org/gnu/guix/bootstrap/i686-linux/20181020/mescc-tools-static-0.5.2-0.bb062b0-i686-linux.tar.xz";
+    url = "https://alpha.gnu.org/gnu/guix/bootstrap/i686-linux/20181020/mescc-tools-static-0.5.2-0.bb062b0-i686-linux.tar.xz";
     sha256 = "11lniw0vg61kmyhvnwkmcnkci9ym6hbmiksiqggd0hkipbq7hvlz";
   };
 
   guileBoot = fetchurl {
-    url = "http://alpha.gnu.org/gnu/guix/bootstrap/i686-linux/20131110/guile-2.0.9.tar.xz";
+    url = "https://alpha.gnu.org/gnu/guix/bootstrap/i686-linux/20131110/guile-2.0.9.tar.xz";
     sha256 = "0im800m30abgh7msh331pcbjvb4n02smz5cfzf1srv0kpx3csmxp";
   };
 
-  unpacked = stdenv.mkDerivation {
+  unpacked = stdenvNoCC.mkDerivation {
     name = "test";
 
     buildCommand = ''
@@ -55,7 +55,7 @@ rec {
 
   nyaccPatch = ./nyacc-binary-literals.patch;
 
-  mesBoot = stdenv.mkDerivation {
+  mesBoot = stdenvNoCC.mkDerivation {
     name = "mes-boot-0";
 
     GUILE_TOOLS = "true";
@@ -64,11 +64,9 @@ rec {
     #MES = "guile";
     #V = 2;
 
+    propagatedBuildInputs = [ unpacked coreutils gnutar gzip patch gnumake bash gnused ];
+
     unpackPhase = ''
-      export PATH=${unpacked}/bin:${coreutils}/bin:${gnutar}/bin:${gzip}/bin:${patch}/bin:${gnumake}/bin:${bash}/bin:${gnused}/bin
-
-      #sed -i configure.sh -e 's/^arch=.*/arch=i686/
-
       tar xf ${mesSrc}
       cd mes-08*
     '';
@@ -98,7 +96,7 @@ rec {
     meta.platforms = [ "i686-linux" ];
   };
 
-  tinycc0 = stdenv.mkDerivation {
+  tinycc0 = stdenvNoCC.mkDerivation {
     name = "tinycc";
 
     MES = "guile";
@@ -108,6 +106,8 @@ rec {
 
     ONE_SOURCE = 1;
     PREPROCESS = 1;
+
+    nativeBuildInputs = [ mesBoot ];
 
     unpackPhase = ''
       ln -s ${unpacked}/lib mes-seed
@@ -128,7 +128,6 @@ rec {
 
     configurePhase = ''
       export GUILE_LOAD_PATH=${unpacked}/share/guile/2.0:$TMPDIR/nyacc-source/module
-      ls -l $TMPDIR/nyacc-source/module
       ./configure --prefix=$out --crtprefix=. --tccdir=.
       export PREFIX=$out
     '';
