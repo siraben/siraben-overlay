@@ -11,6 +11,7 @@ in
   double-pendulum-simulation = super.haskellPackages.callPackage ./double-pendulum-simulation { };
   git2graph = callPackage ./git2graph { };
   jonesforth = callPackage ./jonesforth { };
+  maiko = callPackage ./maiko { };
   mescc-tools-seed = callPackage ./mescc-tools-seed { };
   micro-lisp = callPackage ./micro-lisp { };
   oxide = callPackage ./oxide { };
