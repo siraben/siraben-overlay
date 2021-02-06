@@ -15,6 +15,6 @@ responsibility from any consequence of using the build artifacts of
 any package in this repository.
 
 ## License
-This repository is licensed under the [GPLv3 License](LICENSE).  Note
-that this only applies to the files in this repository but may not
-apply to the build outputs or original package sources.
+This repository is licensed under the [GPLv3 License](LICENSE) or
+later.  Note that this only applies to the files in this repository
+but may not apply to the build outputs or original package sources.
