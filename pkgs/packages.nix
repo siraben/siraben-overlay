@@ -11,6 +11,7 @@ in
   cakelisp = callPackage ./cakelisp { };
   collapseos = callPackage ./collapseos { };
   double-pendulum-simulation = super.haskellPackages.callPackage ./double-pendulum-simulation { };
+  essentials-of-compilation = callPackage ./essentials-of-compilation { };
   git2graph = callPackage ./git2graph { };
   jonesforth = callPackage ./jonesforth { };
   lang-narrow = super.ocamlPackages.callPackage ./lang-narrow { };

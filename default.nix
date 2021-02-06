@@ -1,9 +1,9 @@
-{ sources ? import ./nix/sources.nix { }
-, pkgs ? import sources.nixpkgs { }
-, system ? builtins.currentSystem
-}:
-let
-  # Nixpkgs extended with bootstrappable related packages
-  siraben-pkgs = import ./pkgs { inherit system; };
-in
-siraben-pkgs
+(import (
+  let
+    lock = builtins.fromJSON (builtins.readFile ./flake.lock);
+  in fetchTarball {
+    url = "https://github.com/edolstra/flake-compat/archive/${lock.nodes.flake-compat.locked.rev}.tar.gz";
+    sha256 = lock.nodes.flake-compat.locked.narHash; }
+) {
+  src =  ./.;
+}).defaultNix
