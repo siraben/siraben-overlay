@@ -1,4 +1,4 @@
-# siraben's Nix overlay
+# siraben's Nixpkgs overlay
 
 > Here lies pearls, oddballs, hacks, historical curiosities, strange
 > loops and more, collected over the years during my internet travels,
