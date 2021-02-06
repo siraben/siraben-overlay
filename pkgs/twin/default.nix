@@ -1,17 +1,29 @@
-{ stdenv, fetchFromGitHub, zlib, libX11, libXpm, ncurses }:
+{ lib, stdenv, fetchFromGitHub, zlib, libX11, libXpm, ncurses }:
 
 stdenv.mkDerivation rec {
   pname = "twin";
-  version = "unstable-2020-12-30";
+  version = "0.9.0";
 
   src = fetchFromGitHub {
     owner = "cosmos72";
     repo = "twin";
-    rev = "42dbfae36fe0aea487a3bed70d91f384d5e117eb";
-    sha256 = "0ni2d3k4vqwj704d6fnj7k649qwbxb96z1lal2yppszksiva3vms";
+    rev = "v${version}";
+    sha256 = "sha256-SDb1e2cQkZGi3uCezNLXji8YLMC5vul5z9EtHEDuwvc=";
   };
 
   buildInputs = [ zlib libX11 libXpm ncurses ];
+  enableParallelBuilding = true;
   hardeningDisable = [ "all" ];
-  
+
+  postPatch = lib.optionalString stdenv.isDarwin ''
+    sed -e 's/socklen_t/_socklen_t/g' -i $(find . -type f)
+  '';
+
+  meta = with lib; {
+    description = "";
+    homepage = "https://github.com/cosmos72/twin";
+    license = licenses.gpl2;
+    maintainers = with maintainers; [ siraben ];
+    platforms = platforms.unix;
+  };
 }
