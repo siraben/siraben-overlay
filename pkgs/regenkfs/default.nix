@@ -11,7 +11,7 @@ rustPlatform.buildRustPackage rec {
     sha256 = "19hvxx9cbn13hsykdqfqwq2sjhlm3g7xcr9dzxkwn6jgqfj0wk6f";
   };
 
-  cargoSha256 = "1hz6mf9c9radl7fh8gj9wk3d2gz82r8lqyd163670706r2s5ddhv";
+  cargoSha256 = "sha256-zIBlNa3tsNpbG2BMrQ6FU2YlPZBCU8Zs5jmlAPzHLXs=";
 
   meta = with lib; {
     description = "Reimplementation of genkfs in Rust";
