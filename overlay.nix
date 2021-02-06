@@ -14,6 +14,7 @@ in
   git2graph = callPackage ./pkgs/git2graph { };
   jonesforth = callPackage ./pkgs/jonesforth { };
   lang-narrow = prev.ocamlPackages.callPackage ./pkgs/lang-narrow { };
+  lispe = callPackage ./pkgs/lispe { };
   mes = callPackage ./pkgs/mes { };
   mescc-tools-seed = callPackage ./pkgs/mescc-tools-seed { };
   micro-lisp = callPackage ./pkgs/micro-lisp { };
