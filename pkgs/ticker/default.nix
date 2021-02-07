@@ -2,21 +2,23 @@
 
 buildGoModule rec {
   pname = "ticker";
-  version = "2.4.0";
+  version = "3.0.0";
 
   src = fetchFromGitHub {
     owner = "achannarasappa";
     repo = "ticker";
     rev = "v${version}";
-    sha256 = "sha256-O0cpBJ+llcuw9ts5ihSLX6mHunZH6YAyV3OqNdbj4c4=";
+    sha256 = "sha256-k4ahoaEI2HBoEcRQscpitp2tWsiWmSYaErnth99xOqw=";
   };
 
-  vendorSha256 = "sha256-q7ANs7fxDt2ADBooP4iS09NJrMnqqDzZYK/34ybm84k=";
+  vendorSha256 = "sha256-8Ew+K/uTFoBAhPQwebtjl6bJPiSEE3PaZCYZsQLOMkw=";
+
+  # Tests require internet
+  doCheck = false;
 
   meta = with lib; {
     description = "Terminal stock ticker with live updates and position tracking";
     homepage = "https://github.com/achannarasappa/ticker";
-
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ siraben ];
   };
