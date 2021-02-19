@@ -20,12 +20,11 @@ stdenv.mkDerivation rec {
   buildInputs = lib.optional withGmp gmp;
 
   buildPhase = ''
-    gcc -Wall -ansi -O2 ${lib.optionalString withGmp "-lgmp"} -o scheme scheme.c
+    ${stdenv.cc.targetPrefix}cc -Wall -ansi -O2 ${lib.optionalString withGmp "-lgmp"} -o scheme scheme.c
   '';
 
   installPhase = ''
-    mkdir -p $out/bin
-    cp scheme $out/bin
+    install -Dm755 scheme -t $out/bin
   '';
 
   meta = with lib; {
