@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchFromGitHub, targetPlatform, buildPlatform }:
+{ lib, stdenv, fetchFromGitHub, libbsd }:
 
 stdenv.mkDerivation rec {
   name = "micro-lisp";
@@ -10,11 +10,10 @@ stdenv.mkDerivation rec {
     sha256 = "0ignsvn7vhrgyy60nzbjllngrkkc73x19gsyd3fnpa9vkapdsr40";
   };
 
-  buildPhase = ''
-    make mlisp89 micro-lisp
-  '';
+  buildInputs = [ libbsd ];
+  makeFlags = [ "mlisp89-non-bsd" "micro-lisp" ];
 
-  doCheck = targetPlatform == buildPlatform;
+  doCheck = stdenv.targetPlatform == stdenv.buildPlatform;
 
   checkPhase = ''
     patchShebangs ./test.sh
