@@ -1,4 +1,8 @@
-{ stdenv, lib, fetchurl, ncurses }:
+{ stdenv, lib, fetchurl, ncurses, buildPackages }:
+
+let
+  isCrossCompiling = stdenv.hostPlatform != stdenv.buildPlatform;
+in
 
 stdenv.mkDerivation rec {
   pname = "s9fes";
@@ -9,8 +13,15 @@ stdenv.mkDerivation rec {
     sha256 = "1jd9brg6djxy3kdaw80hpvc557q4w2cjsry064kgkn3js4n6wbg9";
   };
 
+  # Fix cross-compilation
+  postPatch = ''
+    substituteInPlace Makefile --replace 'ar q' '${stdenv.cc.targetPrefix}ar q'
+    substituteInPlace Makefile --replace 'strip' '${stdenv.cc.targetPrefix}strip'
+    ${lib.optionalString isCrossCompiling "substituteInPlace Makefile --replace ./s9 '${buildPackages.s9fes}/bin/s9'"}
+  '';
+
   buildInputs = [ ncurses ];
-  makeFlags = [ "PREFIX=$(out)" ];
+  makeFlags = [ "CC=${stdenv.cc.targetPrefix}cc" "PREFIX=$(out)" ];
   enableParallelBuilding = true;
 
   meta = with stdenv.lib; {
