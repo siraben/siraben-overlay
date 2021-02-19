@@ -10,9 +10,9 @@ stdenv.mkDerivation rec {
   };
 
   buildPhase = ''
-    $CC -O2 -o multihex multihex.c
-    $CC -O2 -o packxxu packxxu.c
-    $CC -O2 -o rompatch rompatch.c
+    ${stdenv.cc.targetPrefix}cc -O2 -o multihex multihex.c
+    ${stdenv.cc.targetPrefix}cc -O2 -o packxxu packxxu.c
+    ${stdenv.cc.targetPrefix}cc -O2 -o rompatch rompatch.c
   '';
 
   installPhase = ''
