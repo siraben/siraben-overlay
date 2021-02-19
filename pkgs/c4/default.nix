@@ -1,4 +1,4 @@
-{ stdenv, lib, fetchFromGitHub, gcc }:
+{ stdenv, lib, fetchFromGitHub }:
 
 stdenv.mkDerivation rec {
   name = "c4";
@@ -9,15 +9,12 @@ stdenv.mkDerivation rec {
     sha256 = "0rqaycq6fdl3r870bzba2cj4y7n34xxfzyvizbqg83s2r27vhqf3";
   };
 
-  nativeBuildInputs = lib.optional stdenv.isDarwin gcc;
-
   buildPhase = ''
-    gcc -o c4 c4.c
+    ${stdenv.cc.targetPrefix}cc -O2 -o c4 c4.c
   '';
 
   installPhase = ''
-    mkdir -p $out/bin
-    cp c4 $out/bin
+    install -Dm755 c4 -t $out/bin
   '';
 
   meta = with lib; {
