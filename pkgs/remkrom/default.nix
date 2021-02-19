@@ -14,7 +14,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoSha256 = "1ikaz1vgzfrczspnj4xjf9pdj4j6a9zjc0i1mf538hgqx75libjx";
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "Reimplementation of mkrom in Rust";
     homepage = "https://github.com/siraben/remkrom";
     license = licenses.mit;

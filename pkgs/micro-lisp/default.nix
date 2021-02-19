@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, targetPlatform, buildPlatform }:
+{ lib, stdenv, fetchFromGitHub, targetPlatform, buildPlatform }:
 
 stdenv.mkDerivation rec {
   name = "micro-lisp";
@@ -29,7 +29,7 @@ stdenv.mkDerivation rec {
   meta = {
     description = "A very small Lisp interpreter in under 200 lines of C";
     homepage = "https://github.com/carld/micro-lisp";
-    license = stdenv.lib.licenses.mit;
-    platforms = stdenv.lib.platforms.all;
+    license = lib.licenses.mit;
+    platforms = lib.platforms.all;
   };
 }

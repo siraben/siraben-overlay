@@ -24,7 +24,7 @@ stdenv.mkDerivation rec {
   makeFlags = [ "CC=${stdenv.cc.targetPrefix}cc" "PREFIX=$(out)" ];
   enableParallelBuilding = true;
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "Scheme 9 From Empty Space";
     homepage = "http://www.t3x.org/s9fes/index.html";
     license = licenses.publicDomain;

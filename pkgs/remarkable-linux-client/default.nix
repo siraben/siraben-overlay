@@ -1,4 +1,4 @@
-{ mkDerivation, stdenv, fetchurl, glibc, qtbase, qtdeclarative,
+{ lib, mkDerivation, stdenv, fetchurl, glibc, qtbase, qtdeclarative,
   qtsvg, qtwebsockets, qtquickcontrols, qtquickcontrols2,
   qtgraphicaleffects, libsForQt512, libGLU, libGL }:
 
@@ -29,7 +29,7 @@ mkDerivation rec {
       "$out/lib:${libsForQt512.karchive}/lib:${qtdeclarative}/lib:${qtsvg}/lib:${qtbase.out}/lib:${qtwebsockets}/lib:${libGLU}/lib:${stdenv.cc.cc.lib}/lib:${libGL}/lib" \
       "$out/bin/reMarkable"
   '';
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "Linux client for interacting with reMarkable cloud";
     homepage = "https://remarkable.engineering";
     license = licenses.unfree; # no source or license in tarball
