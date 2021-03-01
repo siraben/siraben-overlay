@@ -5,8 +5,8 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "rswier";
     repo = name;
-    rev = "2feb8c0a142b2e513be69442c24af82dbaf41a25";
-    sha256 = "0rqaycq6fdl3r870bzba2cj4y7n34xxfzyvizbqg83s2r27vhqf3";
+    rev = "3f098f3ea825f7865a2fbffd770df4ab72978622";
+    sha256 = "sha256-34fYlKf10fkvTWBKjbgxwOzEQ/4b13PSa4LjNDjXZ/8=";
   };
 
   buildPhase = ''
