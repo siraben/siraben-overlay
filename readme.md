@@ -9,6 +9,18 @@ Rather than leave them to bit-rot in my computer, I decided to
 preserve them for the future by writing this overlay.  If they make
 their way into Nixpkgs, I'll remove them from my overlay.
 
+## Usage
+With Nix flakes, run
+```ShellSession
+$ nix shell github:siraben/siraben-overlay#bootstrap-scheme -c scheme
+Welcome to Bootstrap Scheme. Use ctrl-c to exit.
+> (define (fact n) (if (= 0 n) 1 (* n (fact (- n 1)))))
+ok
+> (fact 20)
+2432902008176640000
+> Goodbye
+```
+
 ## Disclaimer
 Although I have audited the source for most packages, I do not take
 responsibility from any consequence of using the build artifacts of
