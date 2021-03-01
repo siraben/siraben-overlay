@@ -23,6 +23,7 @@ in
   oberon-risc-emu = callPackage ./pkgs/oberon-risc-emu { };
   ostools = callPackage ./pkgs/ostools { };
   oxide = callPackage ./pkgs/oxide { };
+  passerine = callPackage ./pkgs/passerine { };
   regenkfs = callPackage ./pkgs/regenkfs { };
   remarkable-linux-client = prev.qt5.callPackage ./pkgs/remarkable-linux-client { };
   remkrom = callPackage ./pkgs/remkrom { };
