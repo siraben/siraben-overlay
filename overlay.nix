@@ -18,6 +18,7 @@ in
   mes = callPackage ./pkgs/mes { };
   mescc-tools-seed = callPackage ./pkgs/mescc-tools-seed { };
   micro-lisp = callPackage ./pkgs/micro-lisp { };
+  mold = callPackage ./pkgs/mold { };
   nix-hello = callPackage ./pkgs/nix-hello { };
   nix-hello-minimal = callPackage ./pkgs/nix-hello-minimal { };
   oberon-risc-emu = callPackage ./pkgs/oberon-risc-emu { };
