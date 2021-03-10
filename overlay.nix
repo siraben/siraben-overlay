@@ -34,5 +34,6 @@ in
   ti84-forth = callPackage ./pkgs/ti84-forth { };
   trealla = callPackage ./pkgs/trealla { };
   twin = callPackage ./pkgs/twin { };
+  urscheme = callPackage ./pkgs/urscheme { };
   zkeme80 = callPackage ./pkgs/zkeme80 { };
 }
