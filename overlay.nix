@@ -12,6 +12,7 @@ in
   double-pendulum-simulation = prev.haskellPackages.callPackage ./pkgs/double-pendulum-simulation { };
   essentials-of-compilation = callPackage ./pkgs/essentials-of-compilation { };
   ezengine = callPackage ./pkgs/ezengine { };
+  fe = callPackage ./pkgs/fe { };
   git2graph = callPackage ./pkgs/git2graph { };
   jonesforth = callPackage ./pkgs/jonesforth { };
   lang-narrow = prev.ocamlPackages.callPackage ./pkgs/lang-narrow { };
