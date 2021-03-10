@@ -21,6 +21,9 @@ ok
 > Goodbye
 ```
 
+## Cross-compilation
+Many of the packages here have been fixed to support cross-compilation.
+
 ## Disclaimer
 Although I have audited the source for most packages, I do not take
 responsibility from any consequence of using the build artifacts of
