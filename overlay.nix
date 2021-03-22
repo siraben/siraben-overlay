@@ -22,7 +22,6 @@ in
   micro-lisp = callPackage ./pkgs/micro-lisp { };
   nix-hello = callPackage ./pkgs/nix-hello { };
   nix-hello-minimal = callPackage ./pkgs/nix-hello-minimal { };
-  oberon-risc-emu = callPackage ./pkgs/oberon-risc-emu { };
   ostools = callPackage ./pkgs/ostools { };
   oxide = callPackage ./pkgs/oxide { };
   passerine = callPackage ./pkgs/passerine { };
