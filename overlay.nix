@@ -33,6 +33,7 @@ in
   stage0 = callPackage ./pkgs/stage0 { };
   the-powder-toy = callPackage ./pkgs/the-powder-toy { inherit (prev) the-powder-toy; };
   ti84-forth = callPackage ./pkgs/ti84-forth { };
+  tz = callPackage ./pkgs/tz { };
   twin = callPackage ./pkgs/twin { };
   urscheme = callPackage ./pkgs/urscheme { };
   zkeme80 = callPackage ./pkgs/zkeme80 { };
