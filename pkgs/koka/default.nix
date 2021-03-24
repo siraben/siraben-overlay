@@ -1,29 +1,48 @@
-{ lib, mkDerivation, fetchFromGitHub, haskeline_0_8_1_1, json, extra
-, cond, hspec, regex-compat, alex, happy }:
+{ stdenv, cmake, makeWrapper, mkDerivation, fetchFromGitHub
+, alex, array, base, bytestring, cond, containers, directory, extra
+, filepath, haskeline, hpack, hspec, hspec-core, json, lib, mtl
+, parsec, process, regex-compat, text, time }:
 
-mkDerivation rec {
-  pname = "koka";
+let
   version = "2.1.1";
-
   src = fetchFromGitHub {
     owner = "koka-lang";
     repo = "koka";
     rev = "v${version}";
-    sha256 = "sha256-2xnJAm95ErjfXyTOQUevoB/sGfrKZH+ePoQsyIW1DpU=";
+    sha256 = "sha256-cq+dljfTKJh5NgwQfxQQP9jRcg2PQxxBVEgQ59ll36o=";
+    fetchSubmodules = true;
   };
-  
-  executableHaskellDepends =  [
-    haskeline_0_8_1_1 json extra cond hspec regex-compat
+  kklib = stdenv.mkDerivation {
+    pname = "kklib";
+    inherit version;
+    src = "${src}/kklib";
+    nativeBuildInputs = [ cmake ];
+  };
+  runtimeDeps = [ cmake stdenv.cc ];
+in
+mkDerivation rec {
+  pname = "koka";
+  inherit version src;
+  isLibrary = false;
+  isExecutable = true;
+  libraryToolDepends = [ hpack ];
+  executableHaskellDepends = [
+    array base bytestring cond containers directory haskeline mtl
+    parsec process text time kklib
   ];
-
-  executableToolDepends = [ alex happy ];
-
+  executableToolDepends = [ alex makeWrapper ];
+  postInstall = ''
+    mkdir -p $out/share/koka/v${version}
+    cp -a lib $out/share/koka/v${version}
+    cp -a contrib $out/share/koka/v${version}
+    cp -a kklib $out/share/koka/v${version}
+    wrapProgram "$out/bin/koka" \
+      --prefix PATH : "${lib.makeSearchPath "bin" runtimeDeps}"
+  '';
   doCheck = false;
-
-  description = "Koka language compiler and interpreter ";
-  homepage    = "https://github.com/koka-lang/koka";
-  license     = lib.licenses.asl20;
-  maintainers = with lib.maintainers; [ siraben ];
-  platforms   = lib.platforms.unix;
-
+  prePatch = "hpack";
+  description = "Koka language compiler and interpreter";
+  homepage = "https://github.com/koka-lang/koka";
+  license = lib.licenses.asl20;
+  maintainers = with lib.maintainers; [ siraben sternenseemann ];
 }
