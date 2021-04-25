@@ -5,6 +5,7 @@ let
 in
 {
   almost-ti = callPackage ./pkgs/almost-ti { };
+  antic = callPackage ./pkgs/antic { };
   attoforth = callPackage ./pkgs/attoforth { };
   blynn = callPackage ./pkgs/blynn { };
   bootstrap-scheme = callPackage ./pkgs/bootstrap-scheme { };
