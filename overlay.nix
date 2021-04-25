@@ -14,6 +14,7 @@ in
   essentials-of-compilation = callPackage ./pkgs/essentials-of-compilation { };
   ezengine = callPackage ./pkgs/ezengine { };
   fe = callPackage ./pkgs/fe { };
+  flint = callPackage ./pkgs/flint { };
   git2graph = callPackage ./pkgs/git2graph { };
   jonesforth = callPackage ./pkgs/jonesforth { };
   koka = prev.haskellPackages.callPackage ./pkgs/koka { };
