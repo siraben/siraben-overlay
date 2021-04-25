@@ -19,7 +19,6 @@ in
   flint = callPackage ./pkgs/flint { };
   git2graph = callPackage ./pkgs/git2graph { };
   jonesforth = callPackage ./pkgs/jonesforth { };
-  koka = prev.haskellPackages.callPackage ./pkgs/koka { };
   lang-narrow = prev.ocamlPackages.callPackage ./pkgs/lang-narrow { };
   mes = callPackage ./pkgs/mes { };
   mescc-tools-seed = callPackage ./pkgs/mescc-tools-seed { };
