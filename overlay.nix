@@ -12,6 +12,7 @@ in
   bootstrap-scheme = callPackage ./pkgs/bootstrap-scheme { };
   c4 = callPackage ./pkgs/c4 { };
   calcium = callPackage ./pkgs/calcium { };
+  cc65 = callPackage ./pkgs/cc65 { };
   collapseos = callPackage ./pkgs/collapseos { };
   double-pendulum-simulation = prev.haskellPackages.callPackage ./pkgs/double-pendulum-simulation { };
   essentials-of-compilation = callPackage ./pkgs/essentials-of-compilation { };
