@@ -11,6 +11,7 @@ in
   blynn = callPackage ./pkgs/blynn { };
   bootstrap-scheme = callPackage ./pkgs/bootstrap-scheme { };
   c4 = callPackage ./pkgs/c4 { };
+  c64-non-sense = callPackage ./pkgs/c64-non-sense { };
   calcium = callPackage ./pkgs/calcium { };
   cc65 = callPackage ./pkgs/cc65 { };
   collapseos = callPackage ./pkgs/collapseos { };
