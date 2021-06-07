@@ -4,6 +4,7 @@ let
   callPackage = prev.callPackage;
 in
 {
+  acme = callPackage ./pkgs/acme { };
   almost-ti = callPackage ./pkgs/almost-ti { };
   antic = callPackage ./pkgs/antic { };
   attoforth = callPackage ./pkgs/attoforth { };
