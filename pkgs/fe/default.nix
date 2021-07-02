@@ -1,18 +1,19 @@
-{ lib, stdenv, fetchFromGitHub, rustPlatform }:
+{ lib, stdenv, fetchFromGitHub, rustPlatform, libiconv }:
 
 rustPlatform.buildRustPackage rec {
   pname = "fe";
-  version = "unstable-2021-02-24"; # breaks on latest nightly
-  # version = "0.2.0-alpha";
+  version = "v0.6.1-alpha";
 
   src = fetchFromGitHub {
     owner = "ethereum";
     repo = "fe";
-    rev = "5e716a62b67deedcd02de3c7d891c9610273fb53";
-    sha256 = "sha256-eBaK2m7gRt0bbbz0ESCGIjIDxHP98GvSSn9dmkbat1k=";
+    rev = version;
+    sha256 = "sha256-207At/DCuY/tI52X8MBj1XYP+p1sqRJ0c1b5VsfTTY4=";
   };
 
-  cargoSha256 = "sha256-03VYpeW48e2fQ+Z3sV1c5O4tWeuNK61lik1HUo1+0iE=";
+  buildInputs = [ libiconv ];
+
+  cargoSha256 = "sha256-KbGuahnYsKQ58f/rHb47hn+nMlErvVMw7C6gJ3jbklY=";
   RUSTC_BOOTSTRAP = 1;
 
   meta = with lib; {
