@@ -17,7 +17,6 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Exact real and complex numbers in C";
     homepage = "https://github.com/fredrik-johansson/calcium";
-
     license = licenses.lgpl21Plus;
     maintainers = with maintainers; [ siraben ];
     platforms = platforms.all;
