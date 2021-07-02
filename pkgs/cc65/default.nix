@@ -17,6 +17,8 @@ gccStdenv.mkDerivation rec {
     "PREFIX=${placeholder "out"}"
   ];
 
+  enableParallelBuilding = true;
+
   meta = with lib; {
     homepage = "https://cc65.github.io/";
     description = "C compiler for processors of 6502 family";
