@@ -6,7 +6,7 @@ in
 
 stdenv.mkDerivation rec {
   pname = "s9fes";
-  version = "unstable-2019-04-02";
+  version = "unstable-2018-12-05";
 
   src = fetchurl {
     url = "http://www.t3x.org/s9fes/s9fes-20181205.tgz";
