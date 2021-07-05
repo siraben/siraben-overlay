@@ -15,4 +15,5 @@ mkDerivation rec {
   executableHaskellDepends = [ base gloss ];
   homepage = "https://github.com/lotz84/double-pendulum-simulation#readme";
   license = lib.licenses.bsd3;
+  mainProgram = "double-pendulum-simulation-exe";
 }
