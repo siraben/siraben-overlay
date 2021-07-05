@@ -32,5 +32,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/petermichaux/bootstrap-scheme";
     license = licenses.agpl3;
     platforms = platforms.all;
+    mainProgram = "scheme";
   };
 }
