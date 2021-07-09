@@ -1,15 +1,35 @@
-{ fetchFromGitHub, the-powder-toy, meson, cmake, luajit, ninja }:
+{ lib, stdenv, fetchFromGitHub, meson, luajit, ninja, pkg-config
+, python3, SDL2, lua, fftwFloat, zlib, bzip2, curl, darwin }:
 
-the-powder-toy.overrideAttrs (oA: {
+stdenv.mkDerivation rec {
+  pname = "the-powder-toy";
+  version = "v96.0.347b";
+
   src = fetchFromGitHub {
     owner = "The-Powder-Toy";
     repo = "The-Powder-Toy";
-    rev = "snapshot-206";
-    sha256 = "sha256-GuO1uCEzvrhUQlMD4FvqNBjtYj3yNm2ybXXjgrgT/uI=";
+    rev = version;
+    sha256 = "sha256-oapYEtCi/q+TwBGZ8XKT6SU/aCTwSJWia5ChePXuw7s=";
   };
-  nativeBuildInputs = [ meson cmake ninja ] ++ oA.nativeBuildInputs;
-  buildInputs = [ luajit ] ++ oA.buildInputs;
+
+  nativeBuildInputs = [ meson ninja pkg-config python3 ];
+
+  buildInputs = [ luajit SDL2 lua fftwFloat zlib bzip2 curl ];
+
   installPhase = ''
     install -Dm 755 powder $out/bin/powder
   '';
-})
+
+  propagatedBuildInputs = lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Cocoa ];
+
+  enableParallelBuilding = true;
+
+  meta = with lib; {
+    description = "A free 2D physics sandbox game";
+    homepage = "http://powdertoy.co.uk/";
+    platforms = [ "i686-linux" "x86_64-linux" "x86_64-darwin" ];
+    license = licenses.gpl3Plus;
+    maintainers = with maintainers; [ abbradar siraben ];
+    mainProgram = "powder";
+  };
+}
