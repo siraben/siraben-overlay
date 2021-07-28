@@ -1,4 +1,4 @@
-{ clangStdenv, fetchFromGitHub }:
+{ clangStdenv, lib, fetchFromGitHub }:
 
 clangStdenv.mkDerivation rec {
   pname = "compiler";
@@ -17,7 +17,7 @@ clangStdenv.mkDerivation rec {
     install -Dm755 precisely -t $out/bin
   '';
 
-  meta = with clangStdenv.lib; {
+  meta = with lib; {
     description = "The adventures of a Haskell compiler";
     homepage = "https://github.com/blynn/compiler";
     license = licenses.gpl3Plus;
