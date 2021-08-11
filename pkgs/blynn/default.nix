@@ -1,22 +1,12 @@
-{ clangStdenv, lib, fetchFromGitHub }:
+{ lib, stdenv, fetchFromGitHub }:
 
-clangStdenv.mkDerivation rec {
-  pname = "compiler";
-  version = "unstable-2020-11-14";
-
+let
   src = fetchFromGitHub {
     owner = "blynn";
-    repo = pname;
-    rev = "42ff37bc98c8b6e9d4fb34510e804d6cfea25d33";
-    sha256 = "0d10xn1c7yqb8l2y0a5pq64y7s4qfms7pj033rwmvnmr6n2h0jy3";
+    repo = "compiler";
+    rev = "b4a6c206241d827c8509480991894f918828c91e";
+    sha256 = "sha256-Kp1fTgBHeaOQX7wkjrfJqegjVaVpVYNd05DQRXrwxTo=";
   };
-
-  makeFlags = [ "precisely" ];
-
-  installPhase = ''
-    install -Dm755 precisely -t $out/bin
-  '';
-
   meta = with lib; {
     description = "The adventures of a Haskell compiler";
     homepage = "https://github.com/blynn/compiler";
@@ -24,4 +14,87 @@ clangStdenv.mkDerivation rec {
     maintainers = with maintainers; [ siraben ];
     platforms = platforms.all;
   };
-}
+  version = "unstable-2021-07-31";
+  vm = stdenv.mkDerivation rec {
+    pname = "vm";
+    inherit version src meta;
+
+    buildPhase= ''
+      cc -O3 -o vm vm.c
+      ./vm > raw
+    '';
+
+    installPhase= ''
+      mkdir -p $out/bin
+      cp vm $out/bin
+      cp raw $out/bin
+    '';
+  };
+  lonely = stdenv.mkDerivation rec {
+    pname = "lonely";
+    inherit version src meta;
+    nativeBuildInputs = [ vm ];
+
+    buildPhase= ''
+      cp ${vm}/bin/raw raw
+      (cat rts.c && vm run effectively.hs < lonely.hs) > lonely.c
+      cc -O3 -o lonely lonely.c
+    '';
+
+    installPhase= ''
+      mkdir -p $out/bin
+      cp lonely $out/bin
+    '';
+  };
+  lvlUp = prev: pname: stdenv.mkDerivation {
+    inherit pname version src meta;
+    nativeBuildInputs = [ prev ];
+
+    buildPhase= ''
+      cp ${vm}/bin/raw raw
+      (cat rts.c && ${prev.pname} < ${pname}.hs) > ${pname}.c
+      cc -O3 -o ${pname} ${pname}.c
+    '';
+
+    installPhase= ''
+      mkdir -p $out/bin
+      cp ${pname} $out/bin
+    '';
+  };
+  lvlUp2 = prev: pname: (lvlUp prev pname).overrideAttrs (oA: {
+    buildPhase= ''
+      ${prev.pname} < ${pname}.hs > ${pname}.c
+      cc -O3 -o ${pname} ${pname}.c
+    '';
+    });
+  innFile = s: "inn/${s}.hs";
+  lvlUp3 = prev: pname: srcs: (lvlUp prev pname).overrideAttrs (oA: {
+    buildPhase= ''
+      cat ${lib.concatStringsSep " " (map innFile srcs)} | ${prev.pname} > ${pname}.c
+      cc -O3 -o ${pname} ${pname}.c
+    '';
+    });
+  patty = lvlUp lonely "patty";
+  guardedly = lvlUp patty "guardedly";
+  assembly = lvlUp guardedly "assembly";
+  mutually = lvlUp assembly "mutually";
+  uniquely = lvlUp mutually "uniquely";
+  virtually = lvlUp uniquely "virtually";
+  marginally = lvlUp2 virtually "marginally";
+  methodically = lvlUp2 marginally "methodically";
+  party = lvlUp2 methodically "party";
+  multiparty = lvlUp3 party "multiparty"
+    [ "Base0" "System" "Ast" "Map" "Parser" "Kiselyov" "Unify" "RTS" "Typer" "party" ];
+  party1 = lvlUp3 multiparty "party1"
+    [ "Base0" "System" "Ast" "Map" "Parser" "Kiselyov" "Unify" "RTS" "Typer1" "party" ];
+  party2 = lvlUp3 party1 "party2"
+    [ "Base0" "System" "Ast1" "Map" "Parser1" "Kiselyov" "Unify" "RTS1" "Typer2" "party" ];
+  party3 = lvlUp3 party2 "party3"
+    [ "Base1" "System1" "Ast2" "Map" "Parser2" "Kiselyov1" "Unify" "RTS2" "Typer3" "party1" ];
+  crossly = lvlUp3 party3 "crossly"
+    [ "Base1" "System1" "Ast3" "Map" "Parser3" "Kiselyov1" "Unify" "RTS3" "Typer4" "party2" ];
+  precisely = lvlUp3 crossly "precisely"
+    [ "BasePrecisely" "System1" "AstPrecisely" "Map" "ParserPrecisely" "Kiselyov1" "Unify" "RTS3" "TyperPrecisely" "party2" ];
+in
+
+precisely
