@@ -34,6 +34,7 @@ in
   ostools = callPackage ./pkgs/ostools { };
   oxide = callPackage ./pkgs/oxide { };
   regenkfs = callPackage ./pkgs/regenkfs { };
+  regit = callPackage ./pkgs/regit { };
   remarkable-linux-client = prev.qt5.callPackage ./pkgs/remarkable-linux-client { };
   remkrom = callPackage ./pkgs/remkrom { };
   rmview = prev.libsForQt5.callPackage ./pkgs/rmview { };
