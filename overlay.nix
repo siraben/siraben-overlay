@@ -39,6 +39,7 @@ in
   remkrom = callPackage ./pkgs/remkrom { };
   rmview = prev.libsForQt5.callPackage ./pkgs/rmview { };
   s9fes = callPackage ./pkgs/s9fes { };
+  spoof-mac = prev.python3Packages.callPackage ./pkgs/spoof-mac { };
   stage0 = callPackage ./pkgs/stage0 { };
   the-powder-toy = callPackage ./pkgs/the-powder-toy { };
   ti84-forth = callPackage ./pkgs/ti84-forth { };
