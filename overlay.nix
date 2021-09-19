@@ -33,7 +33,6 @@ in
   nix-hello-minimal = callPackage ./pkgs/nix-hello-minimal { };
   ostools = callPackage ./pkgs/ostools { };
   oxide = callPackage ./pkgs/oxide { };
-  regenkfs = callPackage ./pkgs/regenkfs { };
   regit = callPackage ./pkgs/regit { };
   remarkable-linux-client = prev.qt5.callPackage ./pkgs/remarkable-linux-client { };
   rmview = prev.libsForQt5.callPackage ./pkgs/rmview { };
