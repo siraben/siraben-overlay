@@ -36,7 +36,6 @@ in
   regenkfs = callPackage ./pkgs/regenkfs { };
   regit = callPackage ./pkgs/regit { };
   remarkable-linux-client = prev.qt5.callPackage ./pkgs/remarkable-linux-client { };
-  remkrom = callPackage ./pkgs/remkrom { };
   rmview = prev.libsForQt5.callPackage ./pkgs/rmview { };
   stage0 = callPackage ./pkgs/stage0 { };
   ti84-forth = callPackage ./pkgs/ti84-forth { };
