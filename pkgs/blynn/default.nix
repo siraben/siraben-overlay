@@ -4,8 +4,8 @@ let
   src = fetchFromGitHub {
     owner = "blynn";
     repo = "compiler";
-    rev = "e1e50214ae67fb956477df86bfe7b77c86dad5e1";
-    sha256 = "sha256-v/Op2r9DJn6T3Qsc9pPndonGZR79BQyOSuyXzoNiA0Y=";
+    rev = "585204f4638ecd73f993de9b6eba5554853abc15";
+    sha256 = "sha256-fs1GLJ4ZynTYxUREiJ70RrqRXDm56K171/5qMRtxFx0=";
   };
   meta = with lib; {
     description = "The adventures of a Haskell compiler";
@@ -14,7 +14,7 @@ let
     maintainers = with maintainers; [ siraben ];
     platforms = platforms.all;
   };
-  version = "unstable-2021-09-08";
+  version = "unstable-2021-10-07";
   vm = stdenv.mkDerivation rec {
     pname = "vm";
     inherit version src meta;
