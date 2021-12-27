@@ -18,6 +18,7 @@ in
   calcium = callPackage ./pkgs/calcium { };
   cc65 = callPackage ./pkgs/cc65 { };
   collapseos = callPackage ./pkgs/collapseos { };
+  crchack = callPackage ./pkgs/crchack { };
   double-pendulum-simulation = prev.haskellPackages.callPackage ./pkgs/double-pendulum-simulation { };
   essentials-of-compilation = callPackage ./pkgs/essentials-of-compilation { };
   ezengine = callPackage ./pkgs/ezengine { };
