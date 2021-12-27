@@ -38,6 +38,7 @@ in
   regit = callPackage ./pkgs/regit { };
   remarkable-linux-client = prev.qt5.callPackage ./pkgs/remarkable-linux-client { };
   rmview = prev.libsForQt5.callPackage ./pkgs/rmview { };
+  simple-vm = callPackage ./pkgs/simple-vm { };
   stage0 = callPackage ./pkgs/stage0 { };
   ti84-forth = callPackage ./pkgs/ti84-forth { };
   twin = callPackage ./pkgs/twin { };
