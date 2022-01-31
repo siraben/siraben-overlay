@@ -24,6 +24,7 @@ in
   ezengine = callPackage ./pkgs/ezengine { };
   fe = callPackage ./pkgs/fe { };
   flint = callPackage ./pkgs/flint { };
+  formula-dotnet = callPackage ./pkgs/formula-dotnet { };
   git2graph = callPackage ./pkgs/git2graph { };
   jonesforth = callPackage ./pkgs/jonesforth { };
   lang-narrow = prev.ocamlPackages.callPackage ./pkgs/lang-narrow { };
