@@ -2,6 +2,7 @@ final: prev:
 
 let
   callPackage = prev.callPackage;
+  darwin = prev.darwin;
 in
 {
   acme = callPackage ./pkgs/acme { };
@@ -44,5 +45,8 @@ in
   ti84-forth = callPackage ./pkgs/ti84-forth { };
   twin = callPackage ./pkgs/twin { };
   urscheme = callPackage ./pkgs/urscheme { };
+  zee = callPackage ./pkgs/zee {
+    inherit (darwin.apple_sdk.frameworks) Security AppKit;
+  };
   zkeme80 = callPackage ./pkgs/zkeme80 { };
 }
