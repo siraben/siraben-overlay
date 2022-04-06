@@ -2,19 +2,18 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "fe";
-  version = "v0.6.1-alpha";
+  version = "v0.15.0-alpha";
 
   src = fetchFromGitHub {
     owner = "ethereum";
     repo = "fe";
     rev = version;
-    sha256 = "sha256-207At/DCuY/tI52X8MBj1XYP+p1sqRJ0c1b5VsfTTY4=";
+    sha256 = "sha256-HKzrxodFdX0je33xnJIwK9uvkHT/M8q/rl2S/vFODMo=";
   };
 
   buildInputs = [ libiconv ];
 
-  cargoSha256 = "sha256-KbGuahnYsKQ58f/rHb47hn+nMlErvVMw7C6gJ3jbklY=";
-  RUSTC_BOOTSTRAP = 1;
+  cargoSha256 = "sha256-FfYUKDqCx6AP4xOCFwxWZarq0L9B3sZDUxWCPw1UIz0=";
 
   meta = with lib; {
     description = "A statically typed smart contract language for the Ethereum Virtual Machine";
