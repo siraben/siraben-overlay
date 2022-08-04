@@ -18,6 +18,7 @@ in
   cistercian = callPackage ./pkgs/cistercian { };
   calcium = callPackage ./pkgs/calcium { };
   cc65 = callPackage ./pkgs/cc65 { };
+  chapterizer = callPackage ./pkgs/chapterizer { };
   collapseos = callPackage ./pkgs/collapseos { };
   crchack = callPackage ./pkgs/crchack { };
   double-pendulum-simulation = prev.haskellPackages.callPackage ./pkgs/double-pendulum-simulation { };
