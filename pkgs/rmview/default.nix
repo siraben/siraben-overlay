@@ -2,17 +2,17 @@
 
 python3Packages.buildPythonApplication rec {
   pname = "rmview";
-  version = "unstable-2021-09-17";
+  version = "unstable-2022-03-02";
 
   src = fetchFromGitHub {
     owner = "bordaigorl";
     repo = pname;
-    rev = "60ebcae9841ed408aab08ac151db98728929db67";
-    sha256 = "sha256-M9LhMJU13Y+3UxMVnBBM8MPOa6+77XOx7RCZCwoqAE8=";
+    rev = "396acde73d84bf6b428f549b378c9be472aa7906";
+    sha256 = "sha256-wXGCoDiRvbFAB9MY8R9MevGhiZUcAzkNo7KNQQM0nFk=";
   };
 
   nativeBuildInputs = with python3Packages; [ pyqt5 wrapQtAppsHook ];
-  propagatedBuildInputs = with python3Packages; [ pyqt5 paramiko twisted service-identity pyopenssl ];
+  propagatedBuildInputs = with python3Packages; [ pyqt5 paramiko twisted service-identity pyopenssl pyjwt ];
 
   preBuild = ''
     pyrcc5 -o src/rmview/resources.py resources.qrc
