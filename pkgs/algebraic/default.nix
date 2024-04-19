@@ -9,6 +9,7 @@ python3Packages.buildPythonApplication rec {
     rev = "eff728bb8ee34bfd1140854a7118ba686103d461";
     sha256 = "0l0229dq02ms0b01gsc4xhkmcx5sx4mdqf8s9kck6vgh6l60nhga";
   };
+  format = "other";
 
   propagatedBuildInputs = with python3Packages; [ numpy pycairo ];
 

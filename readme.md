@@ -12,13 +12,15 @@ their way into Nixpkgs, I'll remove them from my overlay.
 ## Usage
 With Nix flakes, run
 ```ShellSession
+# Minimal Scheme interpreter
 $ nix shell github:siraben/siraben-overlay#bootstrap-scheme -c scheme
 Welcome to Bootstrap Scheme. Use ctrl-c to exit.
 > (define (fact n) (if (= 0 n) 1 (* n (fact (- n 1)))))
 ok
 > (fact 20)
 2432902008176640000
-> Goodbye
+# Algebraic numbers plot
+$ nix run github:siraben/siraben-overlay#algebraic -- --coeff 15 --degrees 1,2,3,4 --draw picture.png
 ```
 
 ## Cross-compilation
