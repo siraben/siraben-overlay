@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchurl, guile }:
+{ lib, stdenv, coreutils, fetchurl, guile }:
 
 stdenv.mkDerivation rec {
   pname = "urscheme";
@@ -10,7 +10,10 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ guile ];
-  # buildInputs = [  ];
+  preBuild = ''
+    patchShebangs runtests
+    substituteInPlace runtests --replace "/bin/rm" "${coreutils}/bin/rm"
+  '';
 
   meta = with lib; {
     description = "";
