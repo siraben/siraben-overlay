@@ -30,7 +30,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "A quick and very dirty Scheme interpreter";
     homepage = "https://github.com/petermichaux/bootstrap-scheme";
-    license = licenses.agpl3;
+    license = licenses.agpl3Plus;
     platforms = platforms.all;
     mainProgram = "scheme";
   };
